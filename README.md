@@ -1,6 +1,6 @@
 # CS321 Project
 
-To run frontend:
+## To run frontend:
 Install nodejs from [here](https://nodejs.org) and select the LTS version (left green button)
 
 Once it is installed, open your terminal and ensure that `npm` runs successfully on it.
@@ -28,7 +28,7 @@ It should say it's running on `http://localhost:5173`, just navigate to this URL
 
 Once done, editing any file in the `frontend/src` folder will automatically reload the frontend with your changes!
 
-To run backend:
+## To run backend:
 Install Java 17 (idk how you are supposed to do this).
 Then you need to cd into the backend folder `cd backend/` and run the following command based on computer.
 
