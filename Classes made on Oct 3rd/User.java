@@ -6,7 +6,7 @@ public class User {
     /**
      * String instance variable for storing the user's name.
      */
-    private String name;
+    private String username;
     /**
      * Enum instance variable for storing the user's type.
      */
@@ -17,18 +17,30 @@ public class User {
     private int userID;
 
     /**
+     * Parameterized constructor for Users.
+     * @param name initial username.
+     * @param type initial user type.
+     * @param ID initial user ID.
+     */
+    public User(String name, UserType type, int ID) {
+        this.username = name;
+        this.userType = type;
+        this.userID = ID;
+    }
+
+    /**
      * Mutator for the user's name variable.
      * @param newName the user's new name.
      */
     public void setName(String newName) {
-        this.name = newName;
+        this.username = newName;
     }
     /**
      * Accessor for the user's name variable.
      * @return the user's name.
      */
     public String getName() {
-        return this.name;
+        return this.username;
     }
 
     /**
