@@ -2,8 +2,8 @@
 /** 
  * @author Alex Choi
  * 
- * Creates a location entry structure that holds 2 values that define
- * a location: Latitude and Longitude.
+ * Creates a Geolocation Coordinates structure that holds 2 values that define
+ * a geolocation: Latitude and Longitude.
  *
  */
 public class GeoCoordinates {
