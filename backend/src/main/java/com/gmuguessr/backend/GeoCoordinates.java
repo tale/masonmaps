@@ -6,7 +6,7 @@
  * a location: Latitude and Longitude.
  *
  */
-public class LocationEntry {
+public class GeoCoordinates {
 	
 	// Instance variables
 	private double latitude;
@@ -15,7 +15,7 @@ public class LocationEntry {
 	/**
 	 *  Default constructor that initializes values to 0
 	 */
-	public LocationEntry() {
+	public GeoCoordinates() {
 		latitude = 0;
 		longitude = 0;
 	}
@@ -26,7 +26,7 @@ public class LocationEntry {
 	 * @param 	newLatitude
 	 * @param 	newLongitude
 	 */
-	public LocationEntry(double newLatitude, double newLongitude) {
+	public GeoCoordinates(double newLatitude, double newLongitude) {
 		latitude = newLatitude;
 		longitude = newLongitude;
 	}
