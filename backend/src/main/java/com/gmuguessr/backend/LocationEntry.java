@@ -9,8 +9,8 @@
 public class LocationEntry {
 	
 	// Instance variables
-	public double latitude;
-	public double longitude;
+	private double latitude;
+	private double longitude;
 	
 	/**
 	 *  Default constructor that initializes values to 0
