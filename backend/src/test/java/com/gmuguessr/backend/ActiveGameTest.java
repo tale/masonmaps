@@ -20,17 +20,17 @@ public class ActiveGameTest {
 		ActiveGame game = new ActiveGame(1);
 		assertEquals(game.getCurrentUsers().length, 0);
 
-		game.addUser(new User("bob"));
+		game.addUser(new User("Bob", UserType.newOnCampusStudent, 1));
 		assertEquals(game.getCurrentUsers().length, 1);
-		assertEquals(game.getCurrentUsers()[0].getUsername(), "bob");
+		assertEquals(game.getCurrentUsers()[0].getName(), "Bob");
 	}
 
 	@Test
 	public void testScoreDisplay() {
 		ActiveGame game = new ActiveGame(1);
-		game.addUser(new User("bob"));
+		game.addUser(new User("Bob", UserType.newOnCampusStudent, 1));
 
-		assertEquals(game.displayScore(), "bob: 0");
+		assertEquals(game.displayScore(), "Bob: 0");
 	}
 
 	@Test

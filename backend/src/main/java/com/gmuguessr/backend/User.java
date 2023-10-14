@@ -1,3 +1,5 @@
+package com.gmuguessr.backend;
+
 /**
  * The User class represents a user with a name, user type, and unique ID.
  * @author Saarthak Sethi
