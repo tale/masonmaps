@@ -5,10 +5,9 @@ package com.gmuguessr.backend;
  * using the Haversine formula.
  */
 public class Distance {
-    private double imageLatitude;
-    private double imageLongitude;
-    private double mapboxApiLatitude;
-    private double mapboxApiLongitude;
+
+    private GeoCoordinates imageCoordinates;
+    private GeoCoordinates mapboxApiCoordinates;
 
     /**
      * Creates a new Distance instance with image and Mapbox API coordinates.
@@ -19,10 +18,18 @@ public class Distance {
      * @param mapboxApiLongitude   The longitude of the Mapbox API location.
      */
     public Distance(double imageLatitude, double imageLongitude, double mapboxApiLatitude, double mapboxApiLongitude) {
-        this.imageLatitude = imageLatitude;
-        this.imageLongitude = imageLongitude;
-        this.mapboxApiLatitude = mapboxApiLatitude;
-        this.mapboxApiLongitude = mapboxApiLongitude;
+        this.imageCoordinates = new GeoCoordinates(imageLatitude, imageLongitude);
+        this.mapboxApiCoordinates = new GeoCoordinates(mapboxApiLatitude, mapboxApiLongitude);
+    }
+
+    /**
+     * Creates a new Distance instance with image and Mapbox API coordinates.
+     * @param imageCoordinates      The latitude and longitude of the image's location
+     * @param mapboxApiCoordinates  The latitude and longitude of the user's guess
+     */
+    public Distance(GeoCoordinates imageCoordinates, GeoCoordinates mapboxApiCoordinates) {
+        this.imageCoordinates = imageCoordinates;
+        this.mapboxApiCoordinates = mapboxApiCoordinates;
     }
 
     /**

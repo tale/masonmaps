@@ -6,22 +6,33 @@ package com.gmuguessr.backend;
 public class Image {
     private String imageId;
     private String url;
-    private double longitude;
-    private double latitude;
+    private GeoCoordinates location;
 
     /**
      * Constructs an Image object with the specified properties.
      *
      * @param imageId   The unique identifier for the image.
      * @param url       The URL of the image.
-     * @param longitude The longitude coordinate of the image's location.
      * @param latitude  The latitude coordinate of the image's location.
+     * @param longitude The longitude coordinate of the image's location.
      */
-    public Image(String imageId, String url, double longitude, double latitude) {
+    public Image(String imageId, String url, double latitude, double longitude) {
         this.imageId = imageId;
         this.url = url;
-        this.longitude = longitude;
-        this.latitude = latitude;
+        this.location = new GeoCoordinates(latitude, longitude);
+    }
+
+    /**
+     * Constructs an Image object with the specified properties.
+     *
+     * @param imageId       The unique identifier for the image.
+     * @param url           The URL of the image.
+     * @param GeoCoordinates    the latitue and longitude of the image's location
+     */
+    public Image(String imageId, String url, GeoCoordinates location) {
+        this.imageId = imageId;
+        this.url = url;
+        this.location = location;
     }
 
     /**
@@ -48,7 +59,7 @@ public class Image {
      * @return The longitude coordinate of the image's location.
      */
     public double getLongitude() {
-        return longitude;
+        return location.getLongitude();
     }
 
     /**
@@ -57,7 +68,7 @@ public class Image {
      * @return The latitude coordinate of the image's location.
      */
     public double getLatitude() {
-        return latitude;
+        return location.getLatitude();
     }
 }
 
