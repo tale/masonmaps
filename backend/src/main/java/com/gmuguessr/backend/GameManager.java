@@ -48,8 +48,8 @@ public class GameManager {
      * @param longitude Longitude of chosen location.
      * @return LocationEntry representing the coordinates.
      */
-    public LocationEntry getMapCoordinates(int latitude, int longitude){
-        return new LocationEntry(latitude, longitude);
+    public GeoCoordinates getMapCoordinates(int latitude, int longitude){
+        return new GeoCoordinates(latitude, longitude);
     }
 
     /**
