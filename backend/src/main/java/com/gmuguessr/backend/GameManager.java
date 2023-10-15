@@ -81,7 +81,6 @@ public class GameManager {
      * @return List of scores from current active games.
      */
     public List<ActiveGame, Integer> getAllScoreBoards(){
-        scoresMap = new HashMap<ActiveGame, Integer>();
         for (ActiveGame game : activeGames){
             scoresMap.put(game, game.calculateScore());
         }
