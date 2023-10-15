@@ -1,13 +1,9 @@
 package com.gmuguessr.backend;
 import org.junit.Before;
-
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import java.beans.Transient;
 import java.util.List;
-
-import javax.tools.JavaFileManager.Location;
 
 public class GameManagerTest {
     private GameManager gameManager;
