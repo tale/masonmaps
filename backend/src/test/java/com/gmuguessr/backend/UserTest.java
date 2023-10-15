@@ -1,12 +1,12 @@
 package com.gmuguessr.backend;
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
 
 public class UserTest {
     private User user;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         // Initialize a User instance before each test
         user = new User("First Last", UserType.newOnCampusStudent, 24);
