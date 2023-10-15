@@ -1,3 +1,5 @@
+package com.gmuguessr.backend;
+
 /**
  * Enum for representing the various types of users.
  */
