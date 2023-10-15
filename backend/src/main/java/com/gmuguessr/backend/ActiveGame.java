@@ -145,7 +145,8 @@ public class ActiveGame {
 	 * @param user - New user to be added to the game.
 	 */
 	public void addUser(User user) {
-		users.add(user);
+;
+		arrayUsers.add(user);
 	};
 
 	/**
@@ -158,4 +159,13 @@ public class ActiveGame {
 		userArray = users.toArray(userArray);
 		return userArray;
 	};
+	/**
+	 * @param game
+	 * @return Diffuclty of a given game 
+	 */
+	public ActiveGame getDifficutlty(ActiveGame game){
+
+		return game.getDifficutlty();
+
+	}
 }

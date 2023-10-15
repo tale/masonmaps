@@ -1,3 +1,4 @@
+
 package com.gmuguessr.backend;
 
 import org.junit.jupiter.api.Test;
@@ -91,4 +92,43 @@ public class ActiveGameTest {
 
 		assertEquals(420, game.getGameID());
 	}
+
+	@Test
+	public void testAddUser() {
+
+		User newUser1 = new User("Bob", User.newOnCampusStudent, 1);
+		User newUser2 = new User("Alice", User.newOnCampusStudent, 2);
+		User newUser3 = new User("Jill", null, 3);
+
+		ArrayList<User> user = new ArrayList<>();
+
+		user.add(newUser1);
+		user.add(newUser2);
+		user.add(newUser3);
+
+		assertEquals("Bob",user.get(1).getName());
+		assertEquals("Alice",user.get(1).getName());
+		assertEquals("Jill",user.get(1).getName());
+
+		assertEquals(1,user.get(1).getID());
+		assertEquals(2,user.get(1).getID());
+		assertEquals(3,user.get(1).getID());
+
+		assertNull(user.get(3).getUserType(),"Value's cannot be null");
+			
+	}
+
+	public void testGetDifficulty() {
+
+		ActiveGame game = new ActiveGame();
+
+		game.setDifficulty("Hard");
+		assertEquals("Hard",game.getDiffculty());
+
+		game.setDifficulty("Easy");
+		assertEquals("Easy", game.getDiffculty());
+
+	}
+
 }
+
