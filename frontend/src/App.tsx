@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import mapboxgl from 'mapbox-gl'; 
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 mapboxgl.accessToken = 'pk.eyJ1IjoiYXNjaG9pIiwiYSI6ImNsbmtwMWdvajBrODEybHBtYXR3dmE3M3YifQ.7EtnhrpR2jJ1r4mnjCMwsQ';
 
 
@@ -12,6 +12,7 @@ function App() {
 
   return (
     <>
+      {/* Jank "header" that should probably be addressed*/}
       <div>
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
@@ -41,6 +42,7 @@ function App() {
         <h4>Your Map App</h4>
         <MapComponent />
       </div>
+      {/*<pre id="coordinates" class="coordinates"></pre>*/}
 
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
@@ -52,14 +54,34 @@ function App() {
 
 const MapComponent: React.FC = () => {
 
+  //const mapContainer = useRef<HTMLDivElement | null>(null);
+  const coordinatesRef = useRef<HTMLPreElement | null>(null);
+
   useEffect(() => {
     // Create a new map when the component mounts
+    //const coordinates = document.getElementById('coordinates');
     const map = new mapboxgl.Map({
       container: 'map', // container ID
       style: 'mapbox://styles/mapbox/streets-v12', // style URL
-      center: [-74.5, 40], // starting position [lng, lat]
-      zoom: 9, // starting zoom
+      center: [-77.307864, 38.829660], // starting position [lng, lat]
+      zoom: 14.5, // starting zoom
     });
+    
+    const marker = new mapboxgl.Marker({
+      draggable: true
+    })
+      .setLngLat([-77.307864, 38.829660])
+      .addTo(map);
+       
+    function onDragEnd() {
+      const lngLat = marker.getLngLat();
+      if(coordinatesRef.current) {
+        coordinatesRef.current.style.display = 'block';
+        coordinatesRef.current.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
+      }
+    }
+       
+    marker.on('dragend', onDragEnd);
 
     // Cleanup function to remove the map when the component unmounts
     return () => map.remove();
@@ -69,8 +91,14 @@ const MapComponent: React.FC = () => {
     width: '400px',
     height: '300px',
   };
+  
 
-  return <div id="map" style={mapStyle}></div>;
+  return  <div>  
+            <div id="map" style={mapStyle}></div>
+            <pre id="coordinates" ref={coordinatesRef} className="coordinates"></pre>
+          </div>;
 };
 
 export default App
+
+
