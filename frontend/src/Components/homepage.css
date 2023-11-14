@@ -1,0 +1,29 @@
+.homepage {
+    text-align: center;
+    background-color: #f7f7f7;
+    padding: 50px;
+    background-image: url('../images/ZoomBackground_01.png');
+   }
+   
+   .homepage h1 {
+    font-size: 48px;
+    color: #333;
+   }
+   
+   .homepage p {
+    font-size: 24px;
+    color: #666;
+   }
+   
+   .homepage button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+   }

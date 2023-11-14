@@ -11,8 +11,8 @@ public class DistanceTest {
         double imageLongitude = -123.4567;
         double mapboxApiLatitude = 45.6780;
         double mapboxApiLongitude = -123.4570;
-        GeoCoordinates imageCoordinates(imageLatitude, imageLongitude);
-        GeoCoordinates mapboxApiCoordinates(mapboxApiLatitude, mapboxApiLongitude);
+        GeoCoordinates imageCoordinates = new GeoCoordinates(imageLatitude, imageLongitude);
+        GeoCoordinates mapboxApiCoordinates = new GeoCoordinates(mapboxApiLatitude, mapboxApiLongitude);
 
         // Create a Distance instance with the defined coordinates
         Distance distance = new Distance(imageCoordinates, mapboxApiCoordinates);
