@@ -41,6 +41,32 @@ public class Distance {
     public double getDistance() {
         // Calculate the distance using the Haversine formula
         // Implement the calculation logic here
-        return 0.0; // Placeholder value; replace with actual calculation
+    	
+    	//Subtracting mapbox latitude from image latitude for latitude delta.
+    	double latImg = this.imageCoordinates.getLatitude();
+    	double latMap = this.mapboxApiCoordinates.getLatitude();
+    	double latDelta = Math.toRadians(latImg - latMap);
+    	
+    	//Subtracting mapbox longitude from image longitude for longitude delta.
+    	double lonImg = this.imageCoordinates.getLongitude();
+    	double lonMap = this.mapboxApiCoordinates.getLongitude();
+    	double lonDelta = Math.toRadians(lonImg - lonMap);
+    	
+    	//Re-converting latitude values to radians for use later.
+    	latImg = Math.toRadians(latImg);
+    	latMap = Math.toRadians(latMap);
+    	
+    	//Applying Haversine formula using taken latitude and longitude deltas.
+    	double formA = Math.pow(Math.sin(latDelta / 2), 2);
+    	double formB = Math.pow(Math.sin(lonDelta / 2), 2);
+    	double formC =  Math.cos(latMap) * Math.cos(latImg);
+    	double formRes = formA + formB * formC;
+    	
+    	//Applying results of Haversine formula to Earth's radius of 6371.
+    	double rad = 6371;
+    	double c = 2 * Math.asin(Math.sqrt(formRes));
+    	double result = rad * c;
+    	
+        return result; // Placeholder value; replace with actual calculation
     }
 }
