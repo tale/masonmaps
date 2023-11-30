@@ -2,6 +2,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Homepage from './Components/Homepage';
 import MapComponent from './Components/MapComponent'
+import LoginSignup from './Components/LoginSignup/LoginSignup'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Homepage />} />
           <Route path='/game' element={<MapComponent/>} />
+          <Route path='/LoginSignup' element={<LoginSignup/>} />
         </Routes>
       
     </Router>

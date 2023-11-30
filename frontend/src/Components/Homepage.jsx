@@ -1,6 +1,7 @@
 import React from 'react';
 import './homepage.css';
 import { Link } from 'react-router-dom';
+
 export default function Homepage() {
  return (
     <div className="homepage">
@@ -8,6 +9,9 @@ export default function Homepage() {
       <p>Easy to learn but really hard to master, so is really addictive!</p>
       <Link to="/game">
         <button>Start Game</button>
+      </Link>
+      <Link to="/LoginSignup">
+        <button>Login</button>
       </Link>
     </div>
  );

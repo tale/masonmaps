@@ -1,8 +1,10 @@
 // MapComponent.jsx
 import React, { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
+
 mapboxgl.accessToken =
   'pk.eyJ1IjoiYXNjaG9pIiwiYSI6ImNsbmtwMWdvajBrODEybHBtYXR3dmE3M3YifQ.7EtnhrpR2jJ1r4mnjCMwsQ';
+
 export default function MapComponent() {
   const coordinatesRef = useRef(null);
 
