@@ -1,7 +1,6 @@
 package com.gmuguessr.backend;
 
 import java.util.ArrayList;
-import com.gmuguessr.backend.User;
 
 /**
  * This class focuses on controlling aspects of a newly created game started by
