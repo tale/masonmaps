@@ -19,6 +19,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	implementation("com.microsoft.sqlserver:mssql-jdbc:6.1.0.jre7")
 }
 
 tasks.withType<Test> {
