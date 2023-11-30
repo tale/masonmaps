@@ -17,6 +17,7 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.postgresql:postgresql:42.7.0")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation("com.microsoft.sqlserver:mssql-jdbc:6.1.0.jre7")
