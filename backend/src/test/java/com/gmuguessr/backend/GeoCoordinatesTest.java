@@ -9,7 +9,7 @@ public class GeoCoordinatesTest {
 	public void testConstructor1() {
 		GeoCoordinates gmuChickFilA = new GeoCoordinates(38.831549515249264, -77.30925088670938);
 		assertEquals(38.831549515249264, gmuChickFilA.getLatitude());
-		assertEquals(-77.30925088670938, gmuChickFilA.getLatitude());
+		assertEquals(-77.30925088670938, gmuChickFilA.getLongitude());
 	}
 	
 	@Test
@@ -57,14 +57,14 @@ public class GeoCoordinatesTest {
 	public void testGetLatitude3() {
 		GeoCoordinates eisenhowerHall = new GeoCoordinates(38.82861573045127, -77.30228500682882);
 		double lat = eisenhowerHall.getLatitude();
-		assertEquals(38.82845222400069, lat);
+		assertEquals(38.82861573045127, lat);
 	}
 
 	@Test
 	public void testGetLongitude3() {
 		GeoCoordinates eisenhowerHall = new GeoCoordinates(38.82861573045127, -77.30228500682882);
 		double lon = eisenhowerHall.getLongitude();
-		assertEquals(-77.30750412978368, lon);
+		assertEquals(-77.30228500682882, lon);
 	}
 	
 	@Test
@@ -75,6 +75,7 @@ public class GeoCoordinatesTest {
 		assertEquals(38.831549515249264, lat);
 	}
 	
+	@Test
 	public void testSetLongitude1() {
 		GeoCoordinates gmuChickFilA = new GeoCoordinates();
 		double lon = -77.30925088670938;

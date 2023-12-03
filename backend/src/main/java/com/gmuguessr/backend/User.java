@@ -17,7 +17,7 @@ public class User {
      * Integer instance variable for storing the user's unique ID.
      */
     private int userID;
-
+    
     /**
      * Parameterized constructor for Users.
      * @param name initial username.
@@ -28,6 +28,16 @@ public class User {
         this.username = name;
         this.userType = type;
         this.userID = ID;
+    }
+    
+    /**
+     * Alternate Constructor for Users, takes in only the name and 
+     * provides default valued for all other fields.
+     * 
+     * @param name - Name of the user.
+     */
+    public User(String name) {
+    	this(name, UserType.newOffCampusStudent, 1);
     }
 
     /**
