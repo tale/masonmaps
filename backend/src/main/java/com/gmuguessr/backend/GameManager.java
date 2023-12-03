@@ -18,21 +18,14 @@ public class GameManager {
 		scoresMap = new HashMap<>();
 	}
 
-	// Defines the diffculty levels of an active game.
-	private enum Difficulty {
-		EASY,
-		MEDIUM,
-		HARD
-	}
-
 	/**
 	 * Creates a new game.
 	 * 
-	 * @param difficulty The games diffiutly level (easy,medium,hard).
+	 * @param difficulty The games difficulty level (easy,medium,hard).
 	 * @param newUserId  Unique id for user associated with a new game.
 	 * @return A unique id for new game.
 	 */
-	public int createNewGame(Difficulty difficulty, User newUserId) {
+	public int createNewGame(GameDifficulty difficulty, User newUserId) {
 		// New instance of ActiveGame
 		ActiveGame newGame = new ActiveGame(difficulty, newUserId);
 
@@ -42,7 +35,7 @@ public class GameManager {
 		// Create a game with initial score of 0
 		scoresMap.put(newGame, 0);
 
-		return newGame.getGameId();
+		return newGame.getGameID();
 	}
 
 	/**
@@ -52,8 +45,13 @@ public class GameManager {
 	 * @return ActiveGame object.
 	 */
 	public ActiveGame getActiveGame(int gameId) {
+		
+		if (activeGames.isEmpty()) {
+			return null;
+		}
+		
 		for (ActiveGame game : activeGames) {
-			if (game.getGameId() == gameId) {
+			if (game.getGameID() == gameId) {
 				return game;
 			}
 		}
@@ -80,11 +78,15 @@ public class GameManager {
 	 */
 	public Image getNextImage(int gameId) {
 		ActiveGame game = getActiveGame(gameId);
-		if (game.isValid()) {
+		
+		try {
 			return game.loadImage();
 		}
-
-		return null; // Not found
+		
+		catch (Exception e) {
+			return null;  // Not found
+		}
+		 
 	}
 
 	/**
@@ -103,7 +105,7 @@ public class GameManager {
 	 */
 	public Map<ActiveGame, Integer> getAllScoreBoards() {
 		for (ActiveGame game : activeGames) {
-			scoresMap.put(game, game.calculateScore());
+			scoresMap.put(game, game.getScore());
 		}
 
 		return scoresMap;

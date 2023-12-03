@@ -1,4 +1,6 @@
+
 package com.gmuguessr.backend;
+
 /**
  * The Distance class calculates the distance between two geographical
  * coordinates (latitude and longitude)
@@ -36,8 +38,7 @@ public class Distance {
 
     /**
      * Calculates the distance between the image location and the Mapbox API
-     * location
-     * using the Haversine formula.
+     * location using the Haversine formula.
      *
      * @return The calculated distance in kilometers.
      */
@@ -70,6 +71,6 @@ public class Distance {
     	double c = 2 * Math.asin(Math.sqrt(formRes));
     	double result = rad * c;
     	
-        return result; // Placeholder value; replace with actual calculation
+        return result; // Final Result
     }
 }

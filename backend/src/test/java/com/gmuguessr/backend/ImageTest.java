@@ -8,7 +8,10 @@ public class ImageTest {
     @Test
     public void testGetImageId() {
         // Create an Image instance with sample values
-        Image image = new Image("12345", "jc-gmu.jpg", 45.6789, -123.4567);
+    	GeoCoordinates coords = new GeoCoordinates();
+    	coords.setLatitude(45.6789);
+    	coords.setLongitude(-123.4567);
+        Image image = new Image("12345", "jc-gmu.jpg", coords);
 
         // Test the getImageId method
         assertEquals("12345", image.getImageId());

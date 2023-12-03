@@ -71,4 +71,3 @@ public class Image {
         return location.getLatitude();
     }
 }
-

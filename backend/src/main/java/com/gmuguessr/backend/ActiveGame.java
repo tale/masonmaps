@@ -1,6 +1,8 @@
 package com.gmuguessr.backend;
 
+
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * This class focuses on controlling aspects of a newly created game started by
@@ -16,6 +18,8 @@ public class ActiveGame {
 	private GameState state;
 	private int score;
 	private ArrayList<User> users;
+	private GameDifficulty setting;
+	private Iterator<Image> iter;
 
 	/**
 	 * Main constructor, sets all other fields to default values.
@@ -28,6 +32,22 @@ public class ActiveGame {
 		this.state = GameState.READY;
 		this.score = 0;
 		this.users = new ArrayList<>();
+		this.setting = GameDifficulty.EASY;
+		this.iter = imgs.listIterator();
+	}
+	
+	/**
+	 * Alternate constructor, sets id to the unique id of the user and allows 
+	 * for modification of the game's difficulty directly.
+	 * 
+	 * @param setting - The difficulty to set the game to.
+	 * @param user - The first user to add and use for the game's ID.
+	 */
+	public ActiveGame(GameDifficulty setting, User user) {
+		this(user.getUserID());
+		this.users.add(user);
+		this.setting = setting;
+		this.iter = imgs.listIterator();
 	}
 
 	/**
@@ -64,6 +84,7 @@ public class ActiveGame {
 	 */
 	public void addImage(Image toAdd) {
 		imgs.add(toAdd);
+		this.resetIter();
 	}
 
 	/**
@@ -132,10 +153,26 @@ public class ActiveGame {
 	 * Gets the next image for active game.
 	 * 
 	 * @return Gets image for specific game.
-	 * @throws Exception (Not implemented yet)
+	 * @throws Exception Thrown if the iterator reached the end or the list is empty.
 	 */
-	public Image loadImage() throws Exception {
-		throw new Exception("Not implemented yet");
+	public Image loadImage() throws Exception  {
+		
+		if (iter.hasNext() == false) {
+			this.resetIter();
+			throw new Exception("No other elements present.");
+		}
+		
+		else {
+			return iter.next();
+		}
+		
+	}
+	
+	/**
+	 * Resets list iterator back to its original state.
+	 */
+	public void resetIter() {
+		this.iter = imgs.listIterator();
 	};
 
 	/**
@@ -144,8 +181,7 @@ public class ActiveGame {
 	 * @param user - New user to be added to the game.
 	 */
 	public void addUser(User user) {
-;
-		arrayUsers.add(user);
+		users.add(user);
 	};
 
 	/**
@@ -158,13 +194,24 @@ public class ActiveGame {
 		userArray = users.toArray(userArray);
 		return userArray;
 	};
+	
+	public User getUser(int index) {
+		return users.get(index);
+	}
+	
 	/**
-	 * @param game
-	 * @return Diffuclty of a given game 
+	 * @param game - Current ActiveGame instance to be examined.
+	 * @return Difficulty of the ActiveGame.
 	 */
-	public ActiveGame getDifficutlty(ActiveGame game){
+	public GameDifficulty getDifficulty() {
+		return setting;
+	}
 
-		return game.getDifficutlty();
-
+	/**
+	 * Sets the ActiveGame instance's difficulty to Easy, Medium, or Hard.
+	 * @param string - The new difficulty to be set.
+	 */
+	public void setDifficulty(GameDifficulty diff) {
+		this.setting = diff;
 	}
 }
