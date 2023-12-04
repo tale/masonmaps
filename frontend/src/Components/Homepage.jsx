@@ -2,7 +2,7 @@ import React from 'react';
 import './Homepage.css';
 import { Link } from 'react-router-dom';
 
-import logo_icon from '../Assets/Logo.png';
+import logo_icon from '../assets/Logo.png';
 
 const Homepage = () => {
  return (
