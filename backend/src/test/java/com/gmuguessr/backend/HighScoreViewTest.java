@@ -7,6 +7,7 @@ import com.gmuguessr.backend.UserType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -38,17 +39,16 @@ class HighScoreViewTest {
         gameManager.getActiveGame(gameId2).increaseScore(150);
 
         // Get the high scores
-        Map<ActiveGame, Integer> highScores = gameManager.getAllScoreBoards();
+        List<ActiveGame> highScores = gameManager.sortByHighscoreHighToLow();
 
         // Check if the high scores are correctly displayed
         assertEquals(2, highScores.size(), "Incorrect number of high scores");
 
         // Assuming the scores are displayed in descending order
         // The first game should have a higher score
-        assertEquals(150, highScores.get(0), "Incorrect high score for the first game");
+        assertEquals(150, highScores.get(0).getScore(), "Incorrect high score for the first game");
 
         // The second game should have a lower score
-        assertEquals(100, highScores.get(1), "Incorrect high score for the second game");
+        assertEquals(100, highScores.get(1).getScore(), "Incorrect high score for the second game");
     }
 }
-

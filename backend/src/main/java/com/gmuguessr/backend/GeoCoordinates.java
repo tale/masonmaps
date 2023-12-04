@@ -1,5 +1,3 @@
-package com.gmuguessr.backend;
-
 
 /** 
  * @author Alex Choi

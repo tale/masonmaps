@@ -11,7 +11,7 @@ import java.util.Iterator;
  * state the
  * game is currently running in.
  */
-public class ActiveGame {
+public class ActiveGame implements Comparable<ActiveGame> {
 
 	private ArrayList<Image> imgs;
 	private int gameID;
@@ -213,5 +213,63 @@ public class ActiveGame {
 	 */
 	public void setDifficulty(GameDifficulty diff) {
 		this.setting = diff;
+	}
+
+	/**
+	 * Starts an active game by modifying its state from READY to RUNNING.
+	 * @throws Exception - Thrown if game has ended or is running.
+	 */
+	public void startGame() throws Exception {
+		
+		if(this.state == GameState.RUNNING) {
+			throw new Exception("Error - Game is already running");
+		}
+		
+		else if (this.state == GameState.ENDED) {
+			throw new Exception("Error - Game has already ended");
+		}
+		
+		this.setGameState(GameState.RUNNING);
+		
+	}
+
+	/**
+	 * Ends an active game by modifying its state from RUNNING to ENDED.
+	 * @throws Exception - Thrown if game has ended or hasn't begun.
+	 */
+	public void endGame() throws Exception {
+		
+		if(this.state == GameState.READY) {
+			throw new Exception("Error - Game has not been started");
+		}
+		
+		else if (this.state == GameState.ENDED) {
+			throw new Exception("Error - Game has already ended");
+		}
+		
+		this.setGameState(GameState.ENDED);
+		
+	}
+
+	/**
+	 * Increases the score based on parameters.
+	 * 
+	 * @param i - Value to be added to the score.
+	 */
+	public void increaseScore(int i) {
+		this.score += i;
+	}
+
+	/**
+	 * Compares with another instance and returns an integer value based on 
+	 * comparing their scores.
+	 * 
+	 * @param o - Other ActiveGame Instance
+	 * @return 0 if scores are equal, 1 if this has a greater score, -1 otherwise.
+	 */
+	@Override
+	public int compareTo(ActiveGame o) {
+		
+		return (this.score - o.score);
 	}
 }

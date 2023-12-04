@@ -77,11 +77,32 @@ public class User {
     public void setUserID(int newID) {
         this.userID = newID;
     }
+    
     /**
      * Accessor for the user's ID variable.
      * @return the user's ID.
      */
     public int getUserID() {
         return this.userID;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+    	
+    	if (o == this) {
+    		return true;
+    	}
+    	
+    	if ((o instanceof User) == false) {
+    		return false;
+    	}
+    	
+    	User comp = (User)o;
+    	
+    	boolean nameComp = this.username.equals(comp.username);
+    	boolean typeComp = (this.userType == comp.userType);
+    	boolean idComp = (this.userID == comp.userID);
+    	
+    	return (nameComp && typeComp && idComp);
     }
 }

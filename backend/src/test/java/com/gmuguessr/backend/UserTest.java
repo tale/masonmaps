@@ -43,4 +43,23 @@ public class UserTest {
         user.setUserType(null);
         assertNull(user.getUserType());
     }
+    
+    @Test
+    public void testEquals() {
+    	User x = new User("Rachel");
+    	User y = new User("Rachel");
+    	User z = new User("Deckard");
+    	String hmp = "AA";
+    	
+    	assertTrue(x.equals(x));
+    	assertFalse(x.equals(hmp));
+    	assertTrue(x.equals(y));
+    	
+    	y.setUserID(43);
+    	assertFalse(x.equals(y));
+    	
+    	y.setUserType(UserType.newFaculty);
+    	assertFalse(x.equals(y));
+    	assertFalse(x.equals(z));
+    }
 }

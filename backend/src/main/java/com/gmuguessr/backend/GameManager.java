@@ -2,6 +2,7 @@ package com.gmuguessr.backend;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 import java.util.HashMap;
 import com.gmuguessr.backend.User;
@@ -95,6 +96,7 @@ public class GameManager {
 	 * @return List of active games.
 	 */
 	public List<ActiveGame> getActiveGames() {
+		
 		return activeGames;
 	}
 
@@ -104,10 +106,21 @@ public class GameManager {
 	 * @return List of scores from current active games.
 	 */
 	public Map<ActiveGame, Integer> getAllScoreBoards() {
+		
 		for (ActiveGame game : activeGames) {
 			scoresMap.put(game, game.getScore());
 		}
 
 		return scoresMap;
 	}
+	
+	/**
+	 * Returns a list of all ActiveGames sorted by score from high to low.
+	 * @return
+	 */
+	public List<ActiveGame> sortByHighscoreHighToLow(){
+		Collections.sort(this.activeGames, Collections.reverseOrder());
+		return this.activeGames;
+	}
+	
 }

@@ -19,17 +19,6 @@ public class DistanceTest {
 
         // Calculate the distance using the getDistance method
         double calculatedDistance = distance.getDistance();
-
-        /*
-         * Note from Neehad: 
-         * 
-         * Unsure as to why the previous expected value for testing was 0.1157.
-         * Applying these coordinate values into the Haversine formula from
-         * GeeksforGeeks (from which the code here is based off of) yields a 
-         * value of around ~1027. Mapbox may add certain values or calculates 
-         * distance values in different calculations. 
-         * 
-         */
         
         // Define the expected distance (this should match your actual distance calculation)
         double expectedDistance = 0.1027;
