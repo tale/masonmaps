@@ -72,9 +72,16 @@ export default function MapComponent() {
 
   return (
     <div>
-      <h1>I think we can add any kind of container right here... </h1>
-      <img></img>
       <div id="map" style={mapStyle}></div>
+      <div className="ans-container">
+      <div className="inputs">
+        <text className="addGuess">
+          <p>Make a Guesse, an Educated One!</p>
+        <input type="text"  placeholder='Add Answer' />
+        </text>
+      </div>
+        <button type="submit">Submit</button>
+      </div>
       <pre id="coordinates" ref={coordinatesRef} className="coordinates"></pre>
     </div>
   );
