@@ -54,8 +54,11 @@ public class BackendApplication {
 			new Image("3", "http://localhost:8080/20230914_161029040_iOS.jpg", 38.82981566714652,
 			-77.30781445053643),
 			
-			new Image("4", "http://localhost:8080/IMG_3139.png", 38.83200733000247, -77.30822486249099),
+			new Image("4", "http://localhost:8080/Bench.png", 38.83200733000247, -77.30822486249099),
 			new Image("5", "http://localhost:8080/IMG_4.png", 38.8320666667, -77.3052055556),
+			new Image("5", "http://localhost:8080/Johnson_Center.png", 38.82954639946533, -77.30813694111254),
+			new Image("5", "http://localhost:8080/Franklin_4.png", 38.832052874, -77.3052307278),
+
 		};
 		
 		int index = Integer.parseInt(counter);
