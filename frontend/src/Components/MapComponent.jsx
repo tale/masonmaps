@@ -21,7 +21,7 @@ export default function MapComponent() {
 	}, [counter]);
 
 	async function requestImage() {
-		const response = await fetch('http://localhost:8080/api/image');
+		const response = await fetch(`http://localhost:8080/api/image?counter=${counter}`);
 		const data = await response.json();
 		return data;
 	}
@@ -80,11 +80,11 @@ export default function MapComponent() {
   };
 
 return (
-	<div style={{ display: 'flex', gap: '10px', marginRight: '10px' }}>
+	<div style={{ display: 'flex', gap: '10px', marginRight: '10px', justifyContent: 'space-between' }}>
 		{currentImage?.url !== null ? (
-			<img src={currentImage?.url} alt="currentImage" height={window.innerHeight} width="auto" />
+			<img src={currentImage?.url} alt="currentImage" height={window.innerHeight} width="auto" style={{ margin: 'auto' }} />
 		) : <div>Loading...</div>}
-			<div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+			<div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingBottom: '10px' }}>
 				<div>
 					<p style={{ textAlign: 'center', color: 'white', fontSize: 12, fontWeight: 'bolder' }}>
 						Your Score

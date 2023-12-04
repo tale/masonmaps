@@ -47,7 +47,7 @@ public class BackendApplication {
 	// Returns a JSON with the image URL
 	@CrossOrigin(origins = "http://localhost:5173")
 	@GetMapping("/image")
-	public Image image() {
+	public Image image(@RequestParam(value = "counter", defaultValue = "0") String counter) {
 		Image[] images = new Image[] {
 				new Image("1", "http://localhost:8080/20230914_160750916_iOS.jpg", 38.8329, -77.309),
 				new Image("2", "http://localhost:8080/20230914_161632.jpg", 38.8294, -77.3057),
@@ -58,8 +58,12 @@ public class BackendApplication {
 				new Image("5", "http://localhost:8080/IMG_4.png", 38.8320666667, -77.3052055556),
 		};
 
-		int rand = (int) (Math.random() * images.length);
-		return images[rand];
+		int index = Integer.parseInt(counter);
+		if (index >= images.length) {
+			index = 0;
+		}
+
+		return images[index];
 	}
 
 	@CrossOrigin(origins = "http://localhost:5173")
