@@ -78,12 +78,14 @@ public class BackendApplication {
 		double dis = (distance.getDistance());
 		int result = 0;
 
-		if ((dis >= 1) && (dis <= 2)) {
-			result = 2;
-		}
-
-		else if (dis < 1) {
-			result = 5;
+		if (dis <= 0.1) {
+			result = 10; // Highest score for very close guesses
+		} else if (dis <= 0.5) {
+			result = 8; // High score for close guesses
+		} else if (dis <= 1) {
+			result = 5; // Medium score for somewhat close guesses
+		} else if (dis <= 2) {
+			result = 2; // Lower score for moderately close guesses
 		}
 
 		score += result;

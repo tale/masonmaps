@@ -108,18 +108,20 @@ public class ActiveGame implements Comparable<ActiveGame> {
 	/**
 	 * Calculates a score value based on the distance of the user's guess.
 	 * 
-	 * @param guess - Distance structure representing a users guess in the system.
+	 * @param guess - Distance structure representing a user's guess in the system.
 	 */
 	public void calculateScore(Distance guess) {
-		double dis = (guess.getDistance());
+		double dis = guess.getDistance();
 		int result = 0;
 
-		if ((dis >= 1) && (dis <= 2)) {
-			result = 2;
-		}
-
-		else if (dis < 1) {
-			result = 5;
+		if (dis <= 0.1) {
+			result = 10; // Highest score for very close guesses
+		} else if (dis <= 0.5) {
+			result = 8; // High score for close guesses
+		} else if (dis <= 1) {
+			result = 5; // Medium score for somewhat close guesses
+		} else if (dis <= 2) {
+			result = 2; // Lower score for moderately close guesses
 		}
 
 		score += result;
