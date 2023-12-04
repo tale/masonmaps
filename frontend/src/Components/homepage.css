@@ -1,29 +1,76 @@
-.homepage {
-    text-align: center;
-    background-color: #f7f7f7;
-    padding: 50px;
-    background-image: url('../images/ZoomBackground_01.png');
-   }
-   
-   .homepage h1 {
-    font-size: 48px;
-    color: #333;
-   }
-   
-   .homepage p {
-    font-size: 24px;
-    color: #666;
-   }
-   
-   .homepage button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
+.homepage-container{
+    display: flex;
+    flex-direction: column;
+    margin: 100px;
+    margin-top: 200px;
+    background: #a19999;
+    padding-bottom: 30px;
+}
+
+.center-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #706318;
+    gap: 9px;
+    font-size: 20px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.underline{
+    width: 78px;
+    height: 5px;
+    background: #d8cceb;
+    border-radius: 3px;
+}
+
+.text-center{
+    font-family: 'Courier New', Courier, monospace;
+    color: #100f09;
+    font-size: 20px;
+    font-weight: 800;
+    align-items: center;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  /* Adjust the height as needed */
+}
+
+  
+.centered-image {
+    max-width: 100%;  /* Ensure the image doesn't exceed the container width */
+    max-height: 100%; /* Ensure the image doesn't exceed the container height */
+  }
+
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-   }
+    border-radius: 5px;
+    background-color: #3498db; /* Adjust the background color */
+    color: #ffffff; /* Adjust the text color */
+    border: 2px solid #3498db; /* Adjust the border color */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Add a smooth transition effect */
+  
+    /* Additional hover styles */
+    &:hover {
+      background-color: #ffffff; /* Adjust the background color on hover */
+      color: #3498db; /* Adjust the text color on hover */
+    }
+  }
+
+  .reviews-container{
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    margin-top: 100px;
+    background: #b55454;
+    padding-bottom: 20px;
+  }
