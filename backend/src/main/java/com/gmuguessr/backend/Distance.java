@@ -1,5 +1,5 @@
-
 package com.gmuguessr.backend;
+import com.gmuguessr.backend.GeoCoordinates;
 
 /**
  * The Distance class calculates the distance between two geographical

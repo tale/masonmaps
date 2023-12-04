@@ -1,5 +1,5 @@
 // MapComponent.jsx
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 
 mapboxgl.accessToken =
@@ -7,6 +7,44 @@ mapboxgl.accessToken =
 
 export default function MapComponent() {
   //const coordinatesRef = useRef(null);
+
+	const [lng, setLng] = useState(-77.307864);
+	const [lat, setLat] = useState(38.829660);
+	const [counter, setCounter] = useState(0);
+	const [currentImage, setCurrentImage] = useState(null);
+	const [score, setScore] = useState(0);
+
+	useEffect(() => {
+		requestImage().then((data) => {
+			setCurrentImage(data);
+		})
+	}, [counter]);
+
+	async function requestImage() {
+		const response = await fetch('http://localhost:8080/api/image');
+		const data = await response.json();
+		return data;
+	}
+
+	async function submit() {
+		const response = await fetch('http://localhost:8080/api/submit', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				...currentImage,
+				lng,
+				lat,
+				score,
+			})
+		});
+
+		const data = await response.text();
+		setCounter(counter + 1);
+		setScore(parseInt(data));
+		return data;
+	}
 
   useEffect(() => {
     const map = new mapboxgl.Map({
@@ -23,29 +61,14 @@ export default function MapComponent() {
       .addTo(map);
 
     function onDragEnd() {
-      const lngLat = marker.getLngLat();
-      if (coordinatesRef.current) {
-        coordinatesRef.current.style.display = 'block';
-        coordinatesRef.current.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
-        console.log(`Longitude: ${lngLat.lng}, Latitude: ${lngLat.lat}`);
-      }
-    }
-
-    
+      const { lng, lat } = marker.getLngLat();
+		setLng(lng);
+		setLat(lat);
+	}
 
     marker.on('dragend', onDragEnd);
-
-    // THIS IS THE INFO THAT NEEDS TO BE SENT TO THE BACKEND
-
-    // Store the marker's longitude and latitude coordinates in a variable
-    const lngLat = marker.getLngLat();
-    // Print the marker's longitude and latitude values in the console
-    console.log(`Longitude: ${lngLat.lng}, Latitude: ${lngLat.lat}`);
-
     return () => map.remove();
   }, []);
-
-
 
   const mapStyle = {
     display: 'flex',
@@ -56,34 +79,29 @@ export default function MapComponent() {
     height: '300px',
   };
 
-  const coordinatesRef = {
-    background: 'rgb(255, 255, 255)',
-    color: '#fc8c03',
-    position: 'absolute',
-    bottom: '40px',
-    left: '10px',
-    padding: '5px 10px',
-    margin: '0',
-    fontSize: '11px',
-    lineHeight: '18px',
-    borderRadius: '3px',
-    display: 'none',
-  };
-
-  return (
-    <div>
-      <div id="map" style={mapStyle}></div>
-      <div className="ans-container">
-      <div className="inputs">
-        <text className="addGuess">
-          <p>Make a Guesse, an Educated One!</p>
-        <input type="text"  placeholder='Add Answer' />
-        </text>
-      </div>
-        <button type="submit">Submit</button>
-      </div>
-      <pre id="coordinates" ref={coordinatesRef} className="coordinates"></pre>
-    </div>
-  );
-};
+return (
+	<div style={{ display: 'flex', gap: '10px', marginRight: '10px' }}>
+		{currentImage?.url !== null ? (
+			<img src={currentImage?.url} alt="currentImage" height={window.innerHeight} width="auto" />
+		) : <div>Loading...</div>}
+			<div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+				<div>
+					<p style={{ textAlign: 'center', color: 'white', fontSize: 12, fontWeight: 'bolder' }}>
+						Your Score
+					</p>
+					<p style={{ textAlign: 'center', color: 'white', fontSize: 64, padding: '4px', fontWeight: 'bolder', margin: 0 }}>
+						{score}
+					</p>
+				</div>
+				<div id="map" style={mapStyle} />
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+					<p style={{ textAlign: 'center', color: 'white', fontSize: 12 }}>
+						Move the marker to the location you think the image was taken at.
+					</p>
+					<button onClick={submit}>Submit Guess</button>
+				</div>
+			</div>
+		</div>
+	);
+}
 
