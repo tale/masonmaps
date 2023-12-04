@@ -127,18 +127,18 @@ public class ActiveGame implements Comparable<ActiveGame> {
 				result = 1; // Lower score for distances between 1.5 and 3
 			}
 		} else if (difficulty == 2) { // Difficulty: Medium
-			if (dis <= 0.05) {
+			if (dis <= 0.025) {
 				result = 10; // Highest score for extremely close guesses
-			} else if (dis <= 0.1) {
+			} else if (dis <= 0.05) {
 				result = 9; // Very high score for very close guesses
-			} else if (dis <= 0.2) {
+			} else if (dis <= 0.15) {
 				result = 7; // High score for close guesses
-			} else if (dis <= 0.5) {
+			} else if (dis <= 0.3) {
 				result = 5; // Medium-high score for somewhat close guesses
-			} else if (dis <= 1) {
+			} else if (dis <= 0.75) {
 				result = 3; // Medium score for moderately close guesses
-			} else if (dis <= 2) {
-				result = 1; // Lower score for distances between 1 and 2
+			} else if (dis <= 1.5) {
+				result = 1; // Lower score for distances between 0.75 and 1.5
 			}
 		} else { // Difficulty: Hard
 			if (dis <= 0.005) {
