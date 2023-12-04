@@ -49,10 +49,13 @@ public class BackendApplication {
 	@GetMapping("/image")
 	public Image image() {
 		Image[] images = new Image[] {
-			new Image("1", "http://localhost:8080/20230914_160750916_iOS.jpg", 38.8329, -77.309),
-			new Image("2", "http://localhost:8080/20230914_161632.jpg", 38.8294, -77.3057),
-			new Image("3", "http://localhost:8080/20230914_161029040_iOS.jpg", 38.82981566714652, -77.30781445053643),
-			new Image("4", "http://localhost:8080/IMG_3139.png", 38.83200733000247, -77.30822486249099),
+				new Image("1", "http://localhost:8080/20230914_160750916_iOS.jpg", 38.8329, -77.309),
+				new Image("2", "http://localhost:8080/20230914_161632.jpg", 38.8294, -77.3057),
+				new Image("3", "http://localhost:8080/20230914_161029040_iOS.jpg", 38.82981566714652,
+						-77.30781445053643),
+
+				new Image("4", "http://localhost:8080/IMG_3139.png", 38.83200733000247, -77.30822486249099),
+				new Image("5", "http://localhost:8080/IMG_4.png", 38.8320666667, -77.3052055556),
 		};
 
 		int rand = (int) (Math.random() * images.length);
