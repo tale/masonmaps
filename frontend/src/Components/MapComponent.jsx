@@ -1,6 +1,7 @@
 // MapComponent.jsx
 import React, { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
+import axios from 'axios';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiYXNjaG9pIiwiYSI6ImNsbmtwMWdvajBrODEybHBtYXR3dmE3M3YifQ.7EtnhrpR2jJ1r4mnjCMwsQ';
@@ -31,15 +32,23 @@ export default function MapComponent() {
       }
     }
 
+   
+
     marker.on('dragend', onDragEnd);
 
     // Store the marker's longitude and latitude coordinates in a variable
     const lngLat = marker.getLngLat();
+    
     // Print the marker's longitude and latitude values in the console
     console.log(`Longitude: ${lngLat.lng}, Latitude: ${lngLat.lat}`);
 
     return () => map.remove();
+
+    
   }, []);
+
+  
+  
 
   const mapStyle = {
     display: 'flex',
@@ -68,6 +77,9 @@ export default function MapComponent() {
     <div>
       <h1>I think we can add any kind of container right here... </h1>
       <div id="map" style={mapStyle}></div>
+      <body>
+        <button type = "button"  >click me  </button>
+      </body>
       <pre id="coordinates" ref={coordinatesRef} className="coordinates"></pre>
     </div>
   );
