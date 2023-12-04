@@ -1,4 +1,4 @@
-# CS321 Project
+# MasonMaps
 
 ## To run frontend:
 Install nodejs from [here](https://nodejs.org) and select the LTS version (left green button)
