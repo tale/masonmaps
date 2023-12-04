@@ -80,19 +80,24 @@ public class BackendApplication {
 
 		Distance distance = new Distance(imageCoordinates, guess);
 		int score = Integer.parseInt(payload.get("score").toString());
+		int difficulty = Integer.parseInt(payload.get("difficulty").toString());
 
 		// I had to rip this for now since we aren't using ActiveGame
 		double dis = (distance.getDistance());
 		int result = 0;
 
-		if (dis <= 0.1) {
-			result = 10; // Highest score for very close guesses
+		if (dis <= 0.05) {
+			result = 10; // Highest score for extremely close guesses
+		} else if (dis <= 0.1) {
+			result = 9; // Very high score for very close guesses
+		} else if (dis <= 0.2) {
+			result = 7; // High score for close guesses
 		} else if (dis <= 0.5) {
-			result = 8; // High score for close guesses
+			result = 5; // Medium-high score for somewhat close guesses
 		} else if (dis <= 1) {
-			result = 5; // Medium score for somewhat close guesses
+			result = 3; // Medium score for moderately close guesses
 		} else if (dis <= 2) {
-			result = 2; // Lower score for moderately close guesses
+			result = 1; // Lower score for distances between 1 and 2
 		}
 
 		score += result;
