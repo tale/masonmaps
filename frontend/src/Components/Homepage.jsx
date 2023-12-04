@@ -2,11 +2,7 @@ import React from 'react';
 import './Homepage.css';
 import { Link } from 'react-router-dom';
 
-<<<<<<< HEAD
-import logo_icon from '../assets/Logo.png';
-=======
 import logo_icon from '../assets/react.svg';
->>>>>>> 50e8a3bc06149fd57d12d8526ad08222589d2f9f
 
 const Homepage = () => {
  return (
